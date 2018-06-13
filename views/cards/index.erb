@@ -1,0 +1,4 @@
+<h1>Welcome to Cards Homepage</h1>
+<% @cposts.each do |cpost|  %>
+  <h3><a href="/cards/<%= cpost[:id] %>"> <%= cpost[:title] %> </a> </h3>
+<% end %>

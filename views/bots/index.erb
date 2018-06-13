@@ -1,0 +1,4 @@
+<h1>Welcome to Bot Posts Homepage</h1>
+<% @bpost.each do |bpost|  %>
+  <h3><a href="/bots/<%= bpost[:id] %>"> <%= bpost[:title] %> </a> </h3>
+<% end %>
