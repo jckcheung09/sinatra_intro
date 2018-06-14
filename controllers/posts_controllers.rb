@@ -41,11 +41,13 @@ class PostsController <Sinatra::Base
   end
   # New
   get '/posts/new' do
-    "this is the new page!!"
+
+    erb :"posts/new"
   end
   # create
   post '/posts/:id' do
-
+    "Create"
+    puts params
   end
   # show
   get '/posts/:id' do
