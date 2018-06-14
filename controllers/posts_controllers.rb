@@ -41,7 +41,9 @@ class PostsController <Sinatra::Base
   end
   # New
   get '/posts/new' do
-
+    @post = {
+      id: ""
+    }
     erb :"posts/new"
   end
   # create
@@ -62,15 +64,25 @@ class PostsController <Sinatra::Base
   end
   # edit
   get "/posts/:id/edit"do
-
+  id = params[:id].to_i
+  @post = $posts[id]
+  erb :"posts/edit"
   end
 
   # Update
   put "/posts/:id" do
+    id = params[:id].to_i
+    post = $posts[id]
+    post[:title] = params[:title]
+    post[:body] = params[:body]
+    $posts[id] = post
+    redirect "/posts/:id"
 
   end
   # Destroy
   delete "/posts/:id"do
-
+      id = params[:id].to_i
+      $posts.delete_at(id)
+      redirect "/posts"
   end
 end
