@@ -45,9 +45,14 @@ class PostsController <Sinatra::Base
     erb :"posts/new"
   end
   # create
-  post '/posts/:id' do
-    "Create"
-    puts params
+  post '/posts/' do
+    new_post = {
+      id: $posts.length,
+      title: params[:title],
+      body: params[:body]
+    }
+  $posts.push(new_post)
+  redirect "/posts"
   end
   # show
   get '/posts/:id' do
