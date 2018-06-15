@@ -8,23 +8,6 @@ class PostsController <Sinatra::Base
   # sets the view directory correctly
   set :views, Proc.new{ File.join(root, "views")}
 
-  $posts =[
-    {
-      id: 0,
-      title: "post 1",
-      body: "this is my first post, so great"
-    },
-      {
-      id: 1,
-      title: "post 2",
-      body: "this is my 2nd post"
-      },{
-      id: 2,
-      title: "post 3",
-      body: "this is my 3nd post"
-    }
-  ]
-
   # Index
   get '/' do
 
