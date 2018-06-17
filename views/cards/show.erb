@@ -1,1 +1,7 @@
-<p><%= @cposts[:body] %></p>
+<p><%= @cpost.body %></p>
+<a href="/cards/<%= @cpost.id %>/edit">Edit</a>
+
+<form class="" action="/cards/<%= @cpost.id %>" method="post">
+<input type="hidden" name="_method" value="DELETE">
+<input type="submit" value="delete">
+</form>

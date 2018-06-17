@@ -9,53 +9,50 @@ class CardController <Sinatra::Base
   # sets the view directory correctly
   set :views, Proc.new{ File.join(root, "views")}
 
-  $cposts =[
-    {
-      id: 0,
-      title: "card post 1",
-      body: "this is my first card post, so great"
-    },
-      {
-      id: 1,
-      title: "card post 2",
-      body: "this is my 2nd card post"
-      },{
-      id: 2,
-      title: "card post 3",
-      body: "this is my 3nd post"
-    }
-  ]
-
   # Index
   get '/cards' do
-    @cposts = $cposts
+    @cpost = Card.all
     erb :"cards/index"
   end
 
   # New
   get '/cards/new' do
-    'this is the new page'
+    @cpost = Card.new
+    erb :"cards/new"
   end
   # show
   get '/cards/:id' do
     id = params[:id].to_i
-    @cposts = $cposts[id]
+    @cpost = Card.find(id)
     erb :'cards/show'
   end
   # create
-  post '/cards/:id' do
-    'this is the create page'
+  post '/cards/' do
+    post = Card.new
+    post.title = params[:title]
+    post.body = params[:body]
+    post.save
+    redirect "/cards"
   end
   # edit
   get '/cards/:id/edit' do
-    'this is the edit page'
+    id = params[:id].to_i
+    @cpost = Card.find(id)
+    erb :"cards/edit"
   end
   # Update
   put "/cards/:id" do
-    'this is the update page'
+    id = params[:id].to_i
+    post = Card.find(id)
+    post.title = params[:title]
+    post.body = params[:body]
+    post.save
+    redirect "/cards/#{id}"
   end
   # Destory
   delete "/cards/:id" do
-    'this is the destroy page'
+    id = params[:id].to_i
+    Card.destroy(id)
+    redirect "/cards"
   end
 end
