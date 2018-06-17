@@ -13,6 +13,7 @@ class PostsController <Sinatra::Base
 
     # "<h1>this is the main page</h1> <h3><a href="/posts"> Go to posts</a></h3> "
     ' <h1>Main page</h1> <h3><a href="/cards"> Go to cards</a> </h3> <h3><a href="/posts"> Go to posts</a></h3> <h3><a href="/bots"> Go to bots</a></h3>'
+      erb :"posts/mainindex"
   end
 
   #post Index
