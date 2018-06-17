@@ -9,3 +9,4 @@ gem "sinatra"
 gem 'sinatra-contrib'
 gem 'rack'
 gem 'pg'
+gem 'bootstrap', '~> 4.1.1'
